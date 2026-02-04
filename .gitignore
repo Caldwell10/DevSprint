@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.env
+.env.*
+.venv/
+venv/
+devsprint.env/
+.envrc
+
+# Tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+ruff_cache/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# IDEs/editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Alembic
+alembic/versions/*.pyc
+
+# Local data
+*.db
+*.sqlite
