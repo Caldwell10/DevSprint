@@ -29,3 +29,5 @@ alembic/versions/*.pyc
 
 *.db
 *.sqlite
+
+*.env
