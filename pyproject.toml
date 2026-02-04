@@ -1,0 +1,46 @@
+[project]
+name = "devsprint"
+version = "0.1.0"
+description = "DevSprint personal study & coding tracker"
+authors = [{name = "Your Name"}]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic-settings>=2.2.0",
+  "sqlalchemy>=2.0.29",
+  "asyncpg>=0.29.0",
+  "alembic>=1.13.1",
+  "python-dateutil>=2.9.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.2.0",
+  "httpx>=0.27.0",
+  "pytest-asyncio>=0.23.0",
+]
+dev = [
+  "ruff>=0.4.0",
+  "mypy>=1.10.0",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true
+warn_return_any = true
+warn_unused_ignores = true
+plugins = []
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["app/tests"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
