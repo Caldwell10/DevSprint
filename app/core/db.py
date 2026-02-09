@@ -1,12 +1,19 @@
 from typing import AsyncGenerator
 
+import ssl
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.core.config import settings
 from app.models.session import Base
 
-# create async engine
-engine = create_async_engine(settings.database_url, echo=False, future=True)
+# create async engine with SSL required (Supabase)
+ssl_context = ssl.create_default_context()
+engine = create_async_engine(
+    settings.database_url,
+    echo=False,
+    future=True,
+    connect_args={"ssl": ssl_context},
+)
 
 # create async sessionmaker
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False)
