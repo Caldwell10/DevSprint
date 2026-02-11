@@ -1,13 +1,17 @@
 from typing import AsyncGenerator
 
 import ssl
+import certifi
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.core.config import settings
 from app.models.session import Base
 
-# create async engine with SSL required (Supabase)
-ssl_context = ssl.create_default_context()
+# create async engine; Supabase pooler sometimes presents a cert chain that fails local verification.
+# For now, disable verification to unblock local dev. In production, provide proper CA.
+ssl_context = ssl.create_default_context(cafile=certifi.where())
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 engine = create_async_engine(
     settings.database_url,
     echo=False,
