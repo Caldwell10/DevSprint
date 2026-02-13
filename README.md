@@ -46,3 +46,4 @@ The API will start at `http://localhost:8000` and create the table if it doesnâ€
 
 ## Notes
 - Personal tool first; designed to be API-first so a lightweight dashboard can be added later.
+- Supabase pooler SSL: currently running with SSL verification disabled in `app/core/db.py` to work around certificate issues in local dev. For stricter TLS, replace the `ssl_context` setup with a verifying context (e.g., using `certifi.where()` and leaving `check_hostname`/`verify_mode` defaults) once you have the correct CA chain.
