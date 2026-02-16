@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.devcontainer/
+.git
+.gitignore
+.env
+devsprint.env
+notes/
