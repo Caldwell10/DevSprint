@@ -9,31 +9,26 @@ __pycache__/
 venv/
 devsprint.env/
 .envrc
-
 .pytest_cache/
 .coverage
 htmlcov/
 .mypy_cache/
 ruff_cache/
-
+coverage.xml
+.coverage.*
 build/
 dist/
 *.egg-info/
-
-# IDEs/editors
+.python-version
 .vscode/
 .idea/
 *.swp
 *.swo
 .DS_Store
-
-# Alembic 
+*.iml
 alembic/versions/*.pyc
-
-# Local data
 *.db
 *.sqlite
-
-# Project-local notes
+docker-compose.override.yml
 progress.md
 planning.md
