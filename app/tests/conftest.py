@@ -25,13 +25,17 @@ def event_loop():
 async def test_engine():
     db_url = os.getenv("TEST_DATABASE_URL", settings.database_url)
 
+    connect_args = {"statement_cache_size": 0}
+    if "localhost" not in db_url and "127.0.0.1" not in db_url:
+        connect_args["ssl"] = app_ssl_context
+
     engine = create_async_engine(
         db_url,
         echo=False,
         future=True,
         pool_pre_ping=True,
         pool_recycle=1800,
-        connect_args={"ssl": app_ssl_context, "statement_cache_size": 0},
+        connect_args=connect_args,
     )
 
     async with engine.begin() as conn:
